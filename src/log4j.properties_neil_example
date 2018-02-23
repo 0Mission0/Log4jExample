@@ -1,0 +1,80 @@
+#Setting propertiesš
+projectName=lttc
+logFilePath = /log/lttc_cbt/EG
+#level : DEBUG, INFO, WARN, ERROR, FATAL)
+logLevel = INFO
+
+### direct log messages to stdout ###
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.conversionPattern=%p, %d{yyyy/MM/dd HH\:mm\:ss}, [%F\:%t], %m%n
+
+### direct log messages to debug ###
+log4j.appender.debug=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.debug.File=${logFilePath}/${projectName}_DEBUG.log
+log4j.appender.debug.DatePattern = '.'yyyy-MM-dd
+log4j.appender.debug.layout=org.apache.log4j.PatternLayout
+log4j.appender.debug.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+
+### direct log messages to Root ###'
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.File=${logFilePath}/${projectName}_ROOT.log
+log4j.appender.file.DatePattern = '.'yyyy-MM-dd
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+### direct log messages to Auth ###'
+log4j.appender.auth=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.auth.File=${logFilePath}/${projectName}_AUTH.log
+log4j.appender.auth.DatePattern = '.'yyyy-MM-dd
+log4j.appender.auth.layout=org.apache.log4j.PatternLayout
+log4j.appender.auth.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+### direct log messages to Info ###'
+log4j.appender.info=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.info.File=${logFilePath}/${projectName}_INFO.log
+log4j.appender.info.DatePattern = '.'yyyy-MM-dd
+log4j.appender.info.layout=org.apache.log4j.PatternLayout
+log4j.appender.info.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+### direct log messages to hibernet log ###'
+log4j.appender.hibernate=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.hibernate.File=${logFilePath}/${projectName}_HIBERNATE.log
+log4j.appender.hibernate.DatePattern = '.'yyyy-MM-dd
+log4j.appender.hibernate.layout=org.apache.log4j.PatternLayout
+log4j.appender.hibernate.layout.ConversionPattern=%p, %d{HH:mm:ss}, account:%X{username}, %m%n
+
+### direct log messages to error ###'
+log4j.appender.error=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.error.File=${logFilePath}/${projectName}_ERROR.log
+log4j.appender.error.DatePattern = '.'yyyy-MM-dd
+log4j.appender.error.layout=org.apache.log4j.PatternLayout
+log4j.appender.error.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+### direct log messages to sql ###'
+log4j.appender.sql=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.sql.File=${logFilePath}/${projectName}_SQL.log
+log4j.appender.sql.DatePattern = '.'yyyy-MM-dd
+log4j.appender.sql.layout=org.apache.log4j.PatternLayout
+log4j.appender.sql.layout.ConversionPattern=%p, %d{HH:mm:ss}, [%F:%t:%c{1}], %m%n
+
+# Root logger option
+# for all class
+log4j.rootLogger=${logLevel},stdout
+
+#Set appender to each generic logger
+log4j.logger.Debug=${logLevel}, debug
+log4j.logger.Info=${logLevel}, info
+log4j.logger.Error=${logLevel}, error
+log4j.logger.auth=${logLevel}, auth
+
+# set logger for org.hibernate
+log4j.logger.org.hibernate=${logLevel}, hibernate
+
+# logs the SQL statements
+log4j.logger.org.hibernate.SQL=${logLevel}, sql
+
+# ignore root log setting for some logger
+log4j.additivity.org.hibernate=false
+log4j.additivity.org.hibernate.SQL=false
