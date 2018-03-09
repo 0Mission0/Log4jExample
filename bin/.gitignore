@@ -1,3 +1,5 @@
 /idv/
 /log4j.properties
+/log4j.properties_customTimeStampFileName
+/log4j.properties_multipleAppender
 /log4j.properties_neil_example

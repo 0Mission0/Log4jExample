@@ -1,0 +1,31 @@
+# Level: DEBUG, INFO, WARN, ERROR, FATAL
+# If you set the above level to INFO, the output message will be reduced
+log4j.logger.idv.mission.example1=DEBUG, example1
+log4j.logger.idv.mission.example2=DEBUG, example2
+
+## All log will record a copy in rootLogger, if you uncomment stdout 
+#log4j.rootLogger=DEBUG, stdout
+#log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+#log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+##log4j.appender.stdout.layout.ConversionPattern=%d %-7level - %msg%n
+#log4j.appender.stdout.layout.ConversionPattern=%m%n
+#log4j.appender.stdout.encoding=UTF-8
+  
+log4j.appender.example1=org.apache.log4j.rolling.RollingFileAppender  
+log4j.appender.example1.rollingPolicy=org.apache.log4j.rolling.TimeBasedRollingPolicy  
+log4j.appender.example1.rollingPolicy.ActiveFileName=worker.log  
+log4j.appender.example1.rollingPolicy.FileNamePattern=worker-.%d{yyyyMMdd-HHmm}.log.gz  
+log4j.appender.example1.layout=org.apache.log4j.PatternLayout  
+log4j.appender.example1.layout.ConversionPattern=%d [%t] %-5p (%F:%L) - %m%n  
+   
+
+
+#log4j.appender.example1=org.apache.log4j.ConsoleAppender
+#log4j.appender.example1.layout=org.apache.log4j.PatternLayout
+#log4j.appender.example1.layout.ConversionPattern=%m%n
+#log4j.appender.example1.encoding=UTF-8
+#
+#log4j.appender.example2=org.apache.log4j.ConsoleAppender
+#log4j.appender.example2.layout=org.apache.log4j.PatternLayout
+#log4j.appender.example2.layout.ConversionPattern=%m%n
+#log4j.appender.example2.encoding=UTF-8
